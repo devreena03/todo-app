@@ -1,0 +1,38 @@
+body{
+    background-color: #e0e0e0;
+}
+
+.todo-body{
+    background-color: white;
+    height: 95vh;
+}
+
+.todo-timeline{
+    height: 30vh;
+    background-color: #c0f4ff; 
+}
+
+.todo-text-margin{
+    margin-left: 1vw !important;
+    margin-top: 2vh;
+}
+
+.todo-table-hover > tbody > tr:hover {
+  background-color:#cbe8ee;
+}
+
+.todo-completed-text {
+    text-decoration: line-through !important;
+}
+
+.todo-bg-success {
+    background-color: #75ef99 !important;
+}
+
+.todo-bg-completed {
+    background-color: #c6f2c0 !important;
+}
+
+.todo-color-blue {
+    color: #1313ce;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+  <title>TO DO</title>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/ui-bootstrap.min.js"></script>
+  <script src="todoModule.js"></script>
+  <script src="todoController.js"></script>
+  <script src="todoService.js"></script>
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" href="lib/css/style.css" />
+</head>
+
+<body>
+
+  <div class="container todo-body" ng-app="todo" ng-controller="ToDoController as todoCont">
+
+    <div class="row">
+      <div class="col-md-12 todo-timeline text-center">
+        <H1 class="todo-color-blue">TODO Manager</H1>
+      </div>
+    </div>
+
+    <form class="form-horizontal">
+
+      <div class="form-group col-md-8 todo-text-margin">
+        <input class="form-control" type="text" id="itemId" ng-model="task" placeholder="Item for your todo list" />
+      </div>
+      <div class="col-md-1 todo-text-margin">
+        <button type="submit" class="btn btn-success btn-sm" ng-click="add(task)" ng-disabled="task.length===0">ADD</button>
+      </div>
+      <div ng-if="items.length>0">
+        <div class="col-md-8 todo-text-margin">
+          <table class="table table-striped todo-table-hover table-bordered">
+
+            <tr ng-class="{'todo-bg-success': item.success, 'todo-bg-completed': item.completed}" ng-repeat="item in items track by $index">
+              <td class="col-md-1"  style="text-align: center">
+                <input type="checkbox" ng-model="item.completed" ng-change="updateStatus(item)"/>
+              </td>
+              <td ng-if="!item.edited" ng-class="{'todo-completed-text': item.completed}" ng-click="item.edited= !item.completed">{{item.task}}
+                <div class="pull-right" ng-if="item.completed" style="display: inline; color: red;" ng-click="delete(item);">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+              </td>
+              <td ng-if="item.edited" ng-class="{'todo-completed-text': item.completed}">
+                 <input class="form-control"  type="text" id="itemItem" ng-model="item.task" ng-mouseleave="updateTask(item)"/>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+         <div class="col-md-8 " ng-if="enableDeleteCompleted()">
+            <button type="button" class="btn btn-link pull-right" ng-click="deleteCompleted()" >Delete All Completed</button>
+      </div>
+      </div>
+    </form>
+
+  </div>
+</body>
+
+</html>
