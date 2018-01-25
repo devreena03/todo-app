@@ -4,8 +4,7 @@ var mongodb = require('mongodb');
 var MongoClient = mongodb.MongoClient;
 
 var database;
-
-var url = "mongodb://system:admin@ds215208.mlab.com:15208/tododb";
+var url = process.env.MONGOLAB_URI;
 
 MongoClient.connect(url, function(err, db) {
    if (err) throw err;
