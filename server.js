@@ -13,7 +13,7 @@ MongoClient.connect(url, function(err, db) {
    database = db;
    db.createCollection("todo-app", function (err, res) {
        app.listen(8080,function(){
-	   console.log('server started at 8080');
+	   console.error('server started at 8080');
     });
   });
 });
