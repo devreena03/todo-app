@@ -6,17 +6,17 @@ var MongoClient = mongodb.MongoClient;
 var database;
 var url = process.env.MONGOLAB_URI;
 
-MongoClient.connect(url, function(err, db) {
-   if (err) throw err;
-   console.log("Database connected!");
-   database = db;
-   db.createCollection("todo-app", function (err, res) {
-       app.listen(8080,function(){
-	   console.error('server started at 8080');
-    });
-  });
-});
-//app.listen(8080);
+// MongoClient.connect(url, function(err, db) {
+//    if (err) throw err;
+//    console.log("Database connected!");
+//    database = db;
+//    db.createCollection("todo-app", function (err, res) {
+//        app.listen(8080,function(){
+// 	   console.error('server started at 8080');
+//     });
+//   });
+// });
+app.listen(8080);
 app.use(express.static(__dirname + '/public')); 
 
 app.use(function(req, res, next) {
@@ -30,9 +30,10 @@ app.get("/", function(req, res){
 });
 
 app.get("/items", function(req, res){
-	database.collection("todo-app").find().toArray(function(err, result) {
-       res.send(result);
-  });
+// 	database.collection("todo-app").find().toArray(function(err, result) {
+//        res.send(result);
+//   });
+res.send([]);
 });
 
 app.post("/add/:item", function(req, res){
