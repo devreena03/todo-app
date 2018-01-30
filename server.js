@@ -16,7 +16,7 @@ var url = process.env.MONGOLAB_URI;
 //     });
 //   });
 // });
-app.listen(8080);
+app.listen(process.env.PORT || 5000);
 app.use(express.static(__dirname + '/public')); 
 
 app.use(function(req, res, next) {
